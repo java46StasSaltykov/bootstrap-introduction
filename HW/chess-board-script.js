@@ -1,12 +1,12 @@
 function createItems(clickFunction, rows, cells) {
     const row = [];
     const result = [];
-    result.length = rows;
-    row.length = cells;
     let color = true;
-    for(let i = 0; i < result.length; i++) {
-        for(let j = 0; j < row.length; j++) {
-            color = !color;
+    for(let i = 0; i < rows; i++) {
+        for(let j = 0; j < cells; j++) {
+            if(j % 8 != 1)
+                color = !color;
+
             if(color == true){
                 row.push(`<div class="col border border-dark onclick="${clickFunction(i, j)}"></div>`);
             }else{
@@ -26,10 +26,6 @@ class ChessBoard {
         this.cells = cells;
     }
     render(rows, cells) {
-        this.parentElement.innerHTML = ''
-        this.parentElement.innerHTML = 
-        `<div class="container">${createItems(this.clickFunction, rows, cells)}</div>`
+        this.parentElement.innerHTML = `<div class="container">${createItems(this.clickFunction, rows, cells)}</div>`
     }
 };
-
-
